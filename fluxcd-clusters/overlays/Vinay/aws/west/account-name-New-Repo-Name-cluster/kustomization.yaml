@@ -1,19 +1,19 @@
 apiVersion: v1
 kind: kustomization
 metadata:
-  name: {{ namespace }}-flux-kustomization
+  name: testnamespace-flux-kustomization
 spec:
   path: ./overlays/prod/aws/east/account_name
   sourceRef:
      kind: GitRepository
-     name: {{ new_repo_name }}-sync
+     name: New-Repo-Name-sync
 ----------------
 
 apiVersion: v2
 kind: GitRepository
 metadata:
-  name: {{ new_repo_name }}
+  name: New-Repo-Name
 spec:
-  url: "ssh://git@github.com:vinayreddy05/{new_repo_name}.git"
+  url: "ssh://git@github.com:vinayreddy05/New-Repo-Name.git"
 
 

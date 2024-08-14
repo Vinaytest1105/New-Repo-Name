@@ -1,4 +1,4 @@
-name: {{ new_repo_name }}-sync
+name: New-Repo-Name-sync
 
 on:
   workflow_dispatch:

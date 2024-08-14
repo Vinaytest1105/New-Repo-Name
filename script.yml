@@ -1,14 +1,14 @@
-name: {{ new_repo_name }}-sync
+name: New-Repo-Name-sync
 
 on:
   workflow_dispatch:
     inputs:
       NEW_REPO_NAME:
-        description: {{ new_repo_name }}
+        description: New-Repo-Name
         required: true
         type: string
       NAMESPACE:
-        description: {{ namespace }}
+        description: testnamespace
         required: true
         type: string
 
