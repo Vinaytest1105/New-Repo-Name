@@ -1,0 +1,5 @@
+apiVersion: v1
+kind: kustomization
+namespace: flux-test-test2sync
+resources:
+  - git-repo.yaml

@@ -1,0 +1,41 @@
+name: {{ new_repo_name }}-sync
+
+on:
+  workflow_dispatch:
+    inputs:
+      NEW_REPO_NAME:
+        description: 'Name of the new repository'
+        required: true
+        type: string
+      NAMESPACE:
+        description: 'Namespace value'
+        required: true
+        type: string
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    env:
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+    steps:
+    - name: Checkout Repository 
+      uses: actions/checkout@v2
+      
+    - name: Set up Python environment
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+
+    - name: Run Python Script for repo creation
+      env:
+        NEW_REPO_NAME: ${{ github.event.inputs.NEW_REPO_NAME }}
+        NAMESPACE: ${{ github.event.inputs.NAMESPACE }}
+      run: |
+        python create_repo.py
